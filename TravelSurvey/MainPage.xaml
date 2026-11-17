@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible="False"
+             x:Class="TravelSurvey.MainPage"
+             Title="Travel Diary"
+             BackgroundColor="#F5EFE6">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16"
+                     Spacing="12"
+                     MaximumWidthRequest="650"
+                     HorizontalOptions="Center">
+
+            <Grid RowDefinitions="Auto,Auto"
+                  ColumnDefinitions="*,Auto"
+                  RowSpacing="5">
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="TRAVEL DIARY"
+                       FontSize="27"
+                       FontAttributes="Bold"
+                       TextColor="#514438"/>
+
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Text="Твоё следующее приключение начинается здесь"
+                       FontSize="13"
+                       TextColor="#8B7865"/>
+
+            </Grid>
+            <Border BackgroundColor="#E5D5C1"
+                Stroke="#B87954"
+                StrokeThickness="1.5"
+                StrokeShape="RoundRectangle 12"
+                Padding="4"
+                Margin="0,4"
+                HeightRequest="145"
+                WidthRequest="450"
+                HorizontalOptions="Center">
+
+                <Image Source="mediterranean.jpg"
+                    Aspect="AspectFill"
+                    HeightRequest="135"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"/>
+
+            </Border>
+
+
+            <Border BackgroundColor="#FFFCF7"
+                    Stroke="#E5D5C1"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16"
+                    Margin="0,4">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Расскажи о себе"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="#514438"/>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Твоё имя"
+                        FontAttributes="Bold"
+                        TextColor="#514438"/>
+
+                        <Entry x:Name="NameEntry"
+                   Placeholder="Например, Никита"
+                   Keyboard="Text"
+                   MaxLength="40"
+                   BackgroundColor="#F5EFE6"
+                   TextColor="#514438"
+                   TextChanged="OnRequiredFieldsChanged"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Электронная почта"
+                   FontAttributes="Bold"
+                   TextColor="#514438"/>
+
+                        <Entry x:Name="EmailEntry"
+                   Placeholder="example@mail.com"
+                   Keyboard="Email"
+                   MaxLength="60"
+                   BackgroundColor="#F5EFE6"
+                   TextColor="#514438"
+                   TextChanged="OnRequiredFieldsChanged"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <Border BackgroundColor="#FFFCF7"
+                    Stroke="#E5D5C1"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16"
+                    Margin="0,4">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Куда отправляемся?"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="#514438"/>
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Picker x:Name="CountryPicker"
+                                Title="Выбери страну"
+                                BackgroundColor="#F5EFE6"
+                                TextColor="#514438">
+
+                            <Picker.Items>
+                                <x:String>Италия</x:String>
+                                <x:String>Франция</x:String>
+                                <x:String>Япония</x:String>
+                                <x:String>Испания</x:String>
+                                <x:String>Турция</x:String>
+                            </Picker.Items>
+
+                        </Picker>
+
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="5">
+
+                        <Label Text="Какой отдых предпочитаешь?"
+                                FontAttributes="Bold"
+                                TextColor="#514438"/>
+
+                        <RadioButton x:Name="BeachRadio"
+                                    Content="Пляжный отдых"
+                                    GroupName="TripType"
+                                    Value="Пляжный отдых"
+                                    TextColor="#514438"/>
+
+                        <RadioButton x:Name="AdventureRadio"
+                                    Content="Приключения"
+                                    GroupName="TripType"
+                                    Value="Приключения"
+                                    TextColor="#514438"/>
+
+                        <RadioButton x:Name="ExcursionRadio"
+                                    Content="Экскурсии"
+                                    GroupName="TripType"
+                                    Value="Экскурсии"
+                                    TextColor="#514438"/>
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+
+            <Border BackgroundColor="#FFFCF7"
+                    Stroke="#E5D5C1"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16"
+                    Margin="0,4">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Дополнительные услуги"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="#514438"/>
+
+                    <HorizontalStackLayout Spacing="10"
+                                            VerticalOptions="Center">
+
+                        <CheckBox x:Name="FlightCheckBox"
+                                    IsChecked="False"
+                                    Color="#B87954"/>
+
+                        <Label Text="Нужен авиабилет"
+                                TextColor="#514438"
+                                VerticalOptions="Center"/>
+
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10"
+                                            VerticalOptions="Center">
+
+                        <CheckBox x:Name="HotelCheckBox"
+                                    IsChecked="False"
+                                    Color="#B87954"/>
+
+                        <Label Text="Нужно проживание"
+                                TextColor="#514438"
+                                VerticalOptions="Center"/>
+
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10"
+                                            VerticalOptions="Center">
+
+                        <Label Text="Нужен трансфер"
+                                TextColor="#514438"
+                                VerticalOptions="Center"/>
+
+                        <Switch x:Name="TransferSwitch"
+                                IsToggled="False"
+                                OnColor="#B87954"/>
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Border BackgroundColor="#FFFCF7"
+                    Stroke="#E5D5C1"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16"
+                    Margin="0,4">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Параметры путешествия"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="#514438"/>
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label Text="Дата начала путешествия"
+                                FontAttributes="Bold"
+                                TextColor="#514438"/>
+
+                        <DatePicker x:Name="TravelDatePicker"
+                                    Format="dd.MM.yyyy"
+                                    Date="2026-11-17"
+                                    MinimumDate="2026-11-17"
+                                    MaximumDate="2027-12-31"
+                                    TextColor="#514438"/>
+
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="8">
+
+                        <Label Text="Бюджет путешествия"
+                                FontAttributes="Bold"
+                                TextColor="#514438"/>
+
+                        <Slider x:Name="BudgetSlider"
+                                Minimum="50000"
+                                Maximum="850000"
+                                Value="125000"
+                                MinimumTrackColor="#B87954"
+                                MaximumTrackColor="#E5D5C1"
+                                ThumbColor="#8B563C"/>
+
+                        <Label Text="{Binding Source={x:Reference BudgetSlider},
+                                        Path=Value,
+                                        Mode=OneWay,
+                                        StringFormat='Бюджет: {0:F0}'}"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="#8B563C"/>
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Border BackgroundColor="#FFFCF7"
+                    Stroke="#E5D5C1"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16"
+                    Margin="0,4">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Дополнительные пожелания"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="#514438"/>
+
+                    <Editor x:Name="WishesEditor"
+                            Placeholder="Расскажи, каким ты видишь своё путешествие..."
+                            AutoSize="TextChanges"
+                            MaxLength="300"
+                            BackgroundColor="#F5EFE6"
+                            TextColor="#514438"
+                            HeightRequest="110"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Button x:Name="ShowResultButton"
+                    Text="Показать результат"
+                    BackgroundColor="#B87954"
+                    TextColor="White"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    IsEnabled="False"
+                    Clicked="OnShowResultClicked"/>
+
+            <Button Text="Очистить анкету"
+                    BackgroundColor="#E5D5C1"
+                    TextColor="#514438"
+                    CornerRadius="14"
+                    Clicked="OnClearClicked"/>
+
+            <Border x:Name="ResultBorder"
+                    IsVisible="False"
+                    BackgroundColor="#FFFCF7"
+                    Stroke="#E5D5C1"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16"
+                    Margin="0,4">
+
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Твоё путешествие"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#514438"/>
+
+                    <Label x:Name="ResultLabel"
+                           TextColor="#514438"
+                           FontSize="14"/>
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Label Text="TRAVEL DIARY • PLAN YOUR JOURNEY"
+                   FontSize="10"
+                   HorizontalOptions="Center"
+                   TextColor="#A18D79"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
